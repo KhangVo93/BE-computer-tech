@@ -18,11 +18,19 @@ app.use(express.urlencoded({
 // Khai báo body dạng json
 app.use(express.json());
 
-const port = 8888;
+const PORT = process.env.PORT || 5000;
 
 // Kết nối với mongoDB
 async function connectMongoDB() {
-    await mongoose.connect("mongodb://localhost:27017/CRUD_SHOP24")
+    // await mongoose.connect("mongodb://localhost:27017/CRUD_SHOP24")
+    mongoose.connect("mongodb+srv://vokhang:123@cluster0.skhz9.mongodb.net/shop24?retryWrites=true&w=majority",
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            //useFindAndModify: false,
+            //useCreateIndex: true
+        })
+
 }
 
 // Thực thi kết nối
@@ -44,6 +52,6 @@ app.use("/orders", orderRouter)
 app.use("/orderDetail", orderDetailRouter)
 app.use("/cart", cartRouter)
 
-app.listen(port, () => {
-    console.log("App listening on port", port)
+app.listen(PORT, () => {
+    console.log("App listening on port", PORT)
 })
