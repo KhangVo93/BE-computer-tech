@@ -18,7 +18,7 @@ app.use(express.urlencoded({
 // Khai báo body dạng json
 app.use(express.json());
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8888;
 
 // Kết nối với mongoDB
 async function connectMongoDB() {
