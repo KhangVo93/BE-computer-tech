@@ -1,0 +1,25 @@
+{
+  "name": "devcamp-backend-shop-24",
+  "version": "1.0.0",
+  "description": "Devcamp backend shop24h",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/devcamp120.j2110/khangvlt/devcamp-backend-shop-24.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/devcamp120.j2110/khangvlt/devcamp-backend-shop-24/issues"
+  },
+  "homepage": "https://gitlab.com/devcamp120.j2110/khangvlt/devcamp-backend-shop-24#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.4"
+  }
+}
