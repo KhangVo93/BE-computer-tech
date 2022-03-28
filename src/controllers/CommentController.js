@@ -44,6 +44,7 @@ function getAllCommentOfProduct(request, response) {
 
     // Gọi hàm .find để tìm kiếm tất cả order của customer đó            
     CommentModel.find({ product: productId })
+        .sort({ dateCreate: -1 })
         // Nếu thành công trả ra status 200 - Success
         .then((comments) => {
             response.status(200).json({
