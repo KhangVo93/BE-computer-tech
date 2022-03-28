@@ -42,6 +42,12 @@ const productSchema = new Schema({
         type: Array,
         default: []
     },
+    Comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'comment'
+        }
+    ],
     TimeCreated: {
         type: Date,
         default: Date.now
