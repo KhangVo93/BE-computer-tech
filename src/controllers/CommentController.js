@@ -8,6 +8,7 @@ function createComment(request, response) {
         _id: mongoose.Types.ObjectId(),
         customer: request.params.customerId,
         product: request.params.productId,
+        nameCustomer: request.body.nameCustomer,
         text: request.body.text
     });
 

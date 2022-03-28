@@ -10,6 +10,9 @@ const commentSchema = new Schema({
     text: {
         type: String
     },
+    nameCustomer: {
+        type: String
+    },
     customer: {
         type: Schema.Types.ObjectId,
         ref: 'customer'
