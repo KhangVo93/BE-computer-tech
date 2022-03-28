@@ -10,6 +10,14 @@ const commentSchema = new Schema({
     text: {
         type: String
     },
+    customer: {
+        type: Schema.Types.ObjectId,
+        ref: 'customer'
+    },
+    product: {
+        type: Schema.Types.ObjectId,
+        ref: 'product'
+    },
     dateCreate: {
         type: Date,
         default: Date.now

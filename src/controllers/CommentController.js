@@ -6,6 +6,8 @@ const { ProductModel } = require("../models/ProductModel");
 function createComment(request, response) {
     const comment = new CommentModel({
         _id: mongoose.Types.ObjectId(),
+        customer: request.params.customerId,
+        product: request.params.productId,
         text: request.body.text
     });
 
@@ -36,33 +38,28 @@ function createComment(request, response) {
         });
 }
 
-function getCommentsOfProduct(request, response) {
+function getAllCommentOfProduct(request, response) {
+    // Lấy customerId từ params URL (Khác với Query URL (sau ?))
     const productId = request.params.productId;
 
-    if (mongoose.Types.ObjectId.isValid(productId)) {
-        ProductModel.findById(productId)
-            .select('Comments')
-            .then((data) => {
-                return response.status(200).json({
-                    message: 'load data by id success',
-                    customer: data
-                })
-            })
-            .catch((error) => {
-                return response.status(500).json({
-                    message: 'load data by id fail',
-                    error: error.message
-                })
-            })
-    }
-    else {
-        // Nếu không phải objectId thì trả ra lỗi 400 - bad request
-        response.status(400).json({
-            message: "fail",
-            error: "customer Id is not valid"
+    // Gọi hàm .find để tìm kiếm tất cả order của customer đó            
+    CommentModel.find({ product: productId })
+        // Nếu thành công trả ra status 200 - Success
+        .then((comments) => {
+            response.status(200).json({
+                success: true,
+                Comments: comments
+            });
         })
-    }
+        // Xử lý lỗi trả ra 500 - Server Internal Error
+        .catch((err) => {
+            response.status(500).json({
+                success: false,
+                message: 'This order does not exist',
+                error: err.message,
+            });
+        });
 }
 
 
-module.exports = { createComment, getCommentsOfProduct }
+module.exports = { createComment, getAllCommentOfProduct }
