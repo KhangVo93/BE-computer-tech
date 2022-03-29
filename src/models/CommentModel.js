@@ -22,8 +22,7 @@ const commentSchema = new Schema({
         ref: 'product'
     },
     dateCreate: {
-        type: Date,
-        default: Date.now
+        type: String
     }
 
 })

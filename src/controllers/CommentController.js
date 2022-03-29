@@ -9,6 +9,7 @@ function createComment(request, response) {
         customer: request.params.customerId,
         product: request.params.productId,
         nameCustomer: request.body.nameCustomer,
+        dateCreate: request.body.dateCreate,
         text: request.body.text
     });
 
