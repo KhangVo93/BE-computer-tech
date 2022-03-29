@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 // Khởi tạo Courst Schema MongoDB
-const commentSchema = new Schema({
+const replyCommentSchema = new Schema({
     _id: Schema.Types.ObjectId, // trường _id có kiểu dữ liệu objectid, 16 ký tự
     text: {
         type: String
@@ -13,28 +13,18 @@ const commentSchema = new Schema({
     nameCustomer: {
         type: String
     },
-    customer: {
+    comment: {
         type: Schema.Types.ObjectId,
-        ref: 'customer'
-    },
-    product: {
-        type: Schema.Types.ObjectId,
-        ref: 'product'
+        ref: 'comment'
     },
     dateCreate: {
         type: String
-    },
-    replyComments: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'replycomment'
-        }
-    ],
+    }
 
 })
 
 // Tạo course model
-const CommentModel = mongoose.model("comment", commentSchema);
+const ReplyCommentModel = mongoose.model("replycomment", replyCommentSchema);
 
 // Export course model
-module.exports = { CommentModel };
+module.exports = { ReplyCommentModel };

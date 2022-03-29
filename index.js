@@ -8,6 +8,7 @@ const customerRouter = require("./src/routers/CustomerRouter")
 const orderRouter = require("./src/routers/OrderRouter")
 const orderDetailRouter = require("./src/routers/OrderDetailRouter")
 const cartRouter = require("./src/routers/CartRouter")
+const commentRouter = require("./src/routers/CommentRouter")
 
 const app = express(); //
 
@@ -51,6 +52,7 @@ app.use("/customers", customerRouter)
 app.use("/orders", orderRouter)
 app.use("/orderDetail", orderDetailRouter)
 app.use("/cart", cartRouter)
+app.use("/comment", commentRouter)
 
 app.listen(PORT, () => {
     console.log("App listening on port", PORT)
